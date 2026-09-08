@@ -45,4 +45,16 @@ public class WelcomePanel extends JPanel {
         gbc.insets = new Insets(10, 10, 30, 10);
         add(descLabel, gbc);
     }
+
+    private JButton createButton(String text, Color bgColor) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("SansSerif", Font.BOLD, 16));
+        button.setForeGround(Color.WHITE);
+        button.setBackground(bgColor);
+        button.setFocusPainted(false);
+        button.setPreferredSize(new Dimension(220, 45));
+        button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        button.setBorder(BorderFactory.createEmptyBorder());
+        return button;
+    }
 }
