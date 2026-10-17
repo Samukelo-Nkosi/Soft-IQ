@@ -564,4 +564,4 @@ SoftIQ is a Java desktop application that can be expanded from a simple educatio
 
 ---
 
-> **SoftIQ - Learn. Test. Improve.**
+> **SoftIQ - Learn. Test. Improve1.**
