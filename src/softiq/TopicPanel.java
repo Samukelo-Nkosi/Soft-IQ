@@ -38,5 +38,21 @@ public class TopicPanel extends JPanel {
         }
 
         JScrollPane scrollPane = new JScrollPane(gridPanel);
+        scrollPane.setBorder(BorderFactory.createEmptyBorder());
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        add(scrollPane,BorderLayout.CENTRE);
+
+        JPanel bottomPanel = new JPanel();
+        bottomPanel.setBackground(new Color(24, 28, 40));
+        JButton backButton = new JButton("Back to Home");
+        backButton.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        backButton.setFocusPainted(false);
+        backButton.addActionListener(e -> frame.showWelcome());
+        bottomPanel.add(backButton);
+        add(bottomPanel, BorderLayout.SOUTH);
+    }
+
+    public void setPlayerName(String name) {
+        playerLabel.setText("Player: " +name);
     }
 }

@@ -90,7 +90,7 @@ Covers:
 
 ## Grading System
 
-SoftwareIQ uses the following grading scale:
+SoftIQ uses the following grading scale:
 
 | Percentage | Grade |
 |:---:|:---:|
