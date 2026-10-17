@@ -7,13 +7,13 @@
  */
 
 
-package softwareiq;
+package softiq;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class WelcomePanel extends JPanel {
-    private static final String CREATOR_NAME = "Samukelo";
+    private static final String CREATOR_NAME = "Samukelo Nkosi";
 
     public WelcomePanel(MainFrame){
         setLayout(new GridBagConstraints());
@@ -24,7 +24,7 @@ public class WelcomePanel extends JPanel {
         gbc.insets = new Insets(10, 10, 10, 10);
         gbc.anchor = GridBagConstraints.CENTER;
 
-        JLabel subtitleLabel = new JLabel("SoftwareIQ");
+        JLabel subtitleLabel = new JLabel("SoftIQ");
         subtitleLabel.setFont(new Font("SansSerif", font.BOLD, 56));
         titleLabel.setForeGround(new Color(8, 44, 85));
         gbc.gridy = 0;
@@ -46,7 +46,7 @@ public class WelcomePanel extends JPanel {
         add(descLabel, gbc);
     }
 
-    private JButton createButton(String text, Color bgColor) {
+    private JButton  createButton(String text, Color bgColor) {
         JButton button = new JButton(text);
         button.setFont(new Font("SansSerif", Font.BOLD, 16));
         button.setForeGround(Color.WHITE);

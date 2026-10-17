@@ -6,7 +6,7 @@
  * Results screen.
  */
 
-package softwareiq;
+package softiq;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,7 +23,7 @@ public class MainFrame extends Jframe {
     private final TopicPanel topicPanel;
 
     public MainFrame(){
-        setTitle("SoftwareIQ - By Samukelo Nkosi");
+        setTitle("SoftIQ - By Samukelo.dev");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(750, 580);
         setMinimumSize(new Dimension (650, 500));
@@ -77,8 +77,8 @@ public class MainFrame extends Jframe {
     }
 
     public void exitApp(){
-        int choice = JOptionPane.showConfirmDialog(this, "Are you sure you want to exit SoftwareIQ?",
-                                                   "Exit SoftwareIQ",
+        int choice = JOptionPane.showConfirmDialog(this, "Are you sure you want to exit SoftIQ?",
+                                                   "Exit SoftIQ",
                                                     JOptionPane.YES_NO_OPTION,
                                                     JOptionPane.QUESTION_MESSAGE);
 

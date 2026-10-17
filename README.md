@@ -31,7 +31,7 @@ The application provides topic-based quizzes, immediate answer feedback, live sc
 
 ## Available Topics
 
-SoftwareIQ currently includes four software-development topics:
+SoftIQ currently includes four software-development topics:
 
 | Topic | Questions |
 |---|---:|
@@ -143,11 +143,11 @@ The results screen also provides a short performance remark based on the final g
 ## Project Structure
 
 ```text
-SoftwareIQ/
+SoftIQ/
 │
 ├── src/
-│   └── softwareiq/
-│       ├── SoftwareIQ.java
+│   └── softiq/
+│       ├── SoftIQ.java
 │       ├── MainFrame.java
 │       ├── WelcomePanel.java
 │       ├── TopicPanel.java
@@ -165,15 +165,15 @@ SoftwareIQ/
 
 ### Class Responsibilities
 
-| Class               | Responsibility |
-|---------------------|---|
-| `SoftwareIQ.java`   | Application entry point |
-| `MainFrame.java`    | Main window and screen navigation |
+| Class           | Responsibility |
+|-----------------|---|
+| `SoftIQ.java`   | Application entry point |
+| `MainFrame.java` | Main window and screen navigation |
 | `WelcomePanel.java` | Landing page and application controls |
-| `TopicPanel.java`   | Displays available quiz topics |
-| `QuizPanel.java`    | Handles questions, answers, feedback, progress, and scoring |
-| `ResultPanel.java`  | Displays the final score, percentage, and grade |
-| `Question.java`     | Data model representing an individual question |
+| `TopicPanel.java` | Displays available quiz topics |
+| `QuizPanel.java` | Handles questions, answers, feedback, progress, and scoring |
+| `ResultPanel.java` | Displays the final score, percentage, and grade |
+| `Question.java` | Data model representing an individual question |
 | `QuestionBank.java` | Stores topics and their questions |
 
 ---
@@ -208,7 +208,7 @@ SoftwareIQ/
 
 ## Requirements
 
-To run SoftwareIQ, you need:
+To run SoftIQ, you need:
 
 - **JDK 8 or later**
 - A Java-compatible IDE or terminal
@@ -229,32 +229,31 @@ javac -version
 
 ### Option 1: Command Line
 
-Open a terminal in the `SoftwareIQ` project directory.
+Open a terminal in the `SoftIQ` project directory.
 
 Compile the source files:
 
 ```bash
 cd src
-javac softwareiq/*.java -d ../out
+javac softiq/*.java -d ../out
 ```
 
 Run the application:
 
 ```bash
 cd ../out
-java softwareiq.SoftwareIQ
-```
+java softiq.SoftIQ
 
 ---
 
 ### Option 2: Visual Studio Code
 
 1. Install the **Extension Pack for Java** from Microsoft.
-2. Open the `SoftwareIQ` folder in VS Code.
+2. Open the `SoftIQ` folder in VS Code.
 3. Open:
 
 ```text
-src/softwareiq/SoftIQ.java
+src/softiq/SoftIQ.java
 ```
 
 4. Click **Run** above the `main()` method.
@@ -268,7 +267,7 @@ F5
 The included `.vscode/launch.json` configuration is already configured to launch:
 
 ```text
-softwareiq.SoftwareIQ
+softiq.SoftIQ
 ```
 
 ---
@@ -277,13 +276,13 @@ softwareiq.SoftwareIQ
 
 1. Open IntelliJ IDEA.
 2. Select **Open**.
-3. Choose the `SoftwareIQ` project folder.
+3. Choose the `SoftIQ` project folder.
 4. Configure a JDK if IntelliJ asks you to.
 5. Mark `src` as a **Sources Root** if it is not detected automatically.
 6. Open:
 
 ```text
-src/softwareiq/SoftwareIQ.java
+src/softiq/SoftIQ.java
 ```
 
 7. Run the `main()` method.
@@ -292,13 +291,13 @@ src/softwareiq/SoftwareIQ.java
 
 ## How the Quiz Works
 
-1. Launch SoftwareIQ.
+1. Launch SoftIQ.
 2. Select **Start Quiz**.
 3. Choose a topic.
 4. Read the question.
 5. Select one of the available answers.
 6. Click **Submit Answer**.
-7. SoftwareIQ immediately indicates whether the answer is correct.
+7. SoftIQ immediately indicates whether the answer is correct.
 8. If the answer is incorrect, the correct answer is displayed.
 9. Continue through the remaining questions.
 10. After the final question, select **Finish Quiz**.
@@ -312,7 +311,7 @@ src/softwareiq/SoftwareIQ.java
 Questions are managed centrally inside:
 
 ```text
-src/softwareiq/QuestionBank.java
+src/softiq/QuestionBank.java
 ```
 
 A question follows this structure:
@@ -345,7 +344,7 @@ For example:
 
 ```java
 q.add(new Question(
-    "Which language is used to build SoftwareIQ?",
+    "Which language is used to build SoftIQ?",
     new String[]{"Python", "Java", "C++", "PHP"},
     1
 ));
@@ -395,7 +394,7 @@ The new topic will automatically appear on the topic-selection screen because th
 SoftIQ follows a simple component-based structure.
 
 ```text
-                    SoftwareIQ.java
+                    SoftIQ.java
                          │
                          ▼
                     MainFrame
@@ -450,7 +449,7 @@ This separates quiz data from the interface and makes the application easier to 
 
 ## Future Improvements
 
-Possible future versions of SoftwareIQ could include:
+Possible future versions of SoftIQ could include:
 
 - [ ] Larger question bank
 - [ ] Randomized questions
@@ -553,7 +552,7 @@ If you plan to distribute or reuse the project, add an appropriate open-source l
 
 **Samukelo Nkosi**
 
-Software Development / SoftwareIQ
+Application Development / SoftIQ
 
 ---
 
@@ -561,8 +560,8 @@ Software Development / SoftwareIQ
 
 **Status:** Active Development
 
-SoftwareIQ is a Java desktop application that can be expanded from a simple educational quiz into a larger learning and assessment platform.
+SoftIQ is a Java desktop application that can be expanded from a simple educational quiz into a larger learning and assessment platform.
 
 ---
 
-> **SoftwareIQ - Learn. Test. Improve.**
+> **SoftIQ - Learn. Test. Improve.**

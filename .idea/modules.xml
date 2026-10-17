@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SoftwareIQ.iml" filepath="$PROJECT_DIR$/SoftwareIQ.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SoftIQ.iml" filepath="$PROJECT_DIR$/SoftIQ.iml" />
     </modules>
   </component>
 </project>
