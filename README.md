@@ -2,7 +2,7 @@
 
 > **Test your software development knowledge.**
 
-SoftwareIQ is a Java Swing desktop quiz application designed to help students and developers test their knowledge of core software development concepts through interactive multiple-choice quizzes.
+SoftIQ is a Java Swing desktop quiz application designed to help students and developers test their knowledge of core software development concepts through interactive multiple-choice quizzes.
 
 The application provides topic-based quizzes, immediate answer feedback, live scoring, progress tracking, and a final grade after each quiz.
 
@@ -564,4 +564,4 @@ SoftIQ is a Java desktop application that can be expanded from a simple educatio
 
 ---
 
-> **SoftIQ - Learn. Test. Improve1.**
+> **SoftIQ - Learn. Test. Improve.**
