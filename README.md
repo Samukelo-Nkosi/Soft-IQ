@@ -1,4 +1,4 @@
-# SoftwareIQ
+# SoftIQ
 
 > **Test your software development knowledge.**
 
