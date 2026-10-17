@@ -15,8 +15,8 @@ import java.awt.*;
 public class WelcomePanel extends JPanel {
     private static final String CREATOR_NAME = "Samukelo Nkosi";
 
-    public WelcomePanel(MainFrame){
-        setLayout(new GridBagConstraints());
+    public WelcomePanel(MainFrame frame){
+        setLayout(new GridBagLayout());
         setBackground(new Color(24, 28, 40));
 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -25,12 +25,12 @@ public class WelcomePanel extends JPanel {
         gbc.anchor = GridBagConstraints.CENTER;
 
         JLabel subtitleLabel = new JLabel("SoftIQ");
-        subtitleLabel.setFont(new Font("SansSerif", font.BOLD, 56));
+        titleLabel.setFont(new Font("SansSerif", font.BOLD, 56));
         titleLabel.setForeGround(new Color(8, 44, 85));
         gbc.gridy = 0;
         add(titleLabel, gbc);
 
-        JLabel subtitleLabel = new JLabel("Test Your Software Development Knowledge");
+        JLabel titleLabel = new JLabel("Test Your Software Development Knowledge");
         subtitleLabel.setFont(new Font("SansSerif", Font.PLAIN, 18));
         subtitleLabel.setForeground(Color.LIGHT_GRAY);
         gbc.gridy = 1;
