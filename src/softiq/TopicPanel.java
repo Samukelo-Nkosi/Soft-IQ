@@ -9,24 +9,32 @@ import java.awt.*;
  */
 
 public class TopicPanel extends JPanel {
+    private final JLabel playerLabel;
 
     public TopicPanel(MainFrame frame){
         setLayout(new BorderLayout());
         setBackground(new Color(24, 28, 40));
 
+        JPanel header = new JPanel(new BorderLayout());
+        header.setOpaque(false);
         JLabel heading = new JLabel("Choose a topic", SwingConstants.CENTER);
         heading.setFont(new Font("SansSerif", Font.BOLD, 30));
         heading.setForeground(Color.WHITE);
         heading.setBorder(BorderFactory.createEmptyBorder(30, 10, 20, 10));
-        add(heading, BorderLayout.NORTH);
+        header.add(heading, BorderLayout.CENTER);
+        playerLabel = new JLabel("Player: Guest", SwingConstants.CENTER);
+        playerLabel.setForeground(Color.LIGHT_GRAY);
+        playerLabel.setBorder(BorderFactory.createEmptyBorder(0, 10, 12, 10));
+        header.add(playerLabel, BorderLayout.SOUTH);
+        add(header, BorderLayout.NORTH);
 
         JPanel gridPanel =new JPanel(new GridLayout(0, 2, 20, 20));
         gridPanel.setBackground(new Color(24,28, 40));
         gridPanel.setBorder(BorderFactory.createEmptyBorder(20, 60, 20, 60));
 
-        for (String topic : QuestionBank.getTopics()) {
+        for (String topic : Questionbank.getTopics()) {
             JButton topicButton = new JButton("<html><center>" + topic + "<br>"
-                    + "<font size=2>" + QuestionBank.getQuestions(topic).size() + " questions</font></center></html>");
+                    + "<font size=2>" + Questionbank.getQuestions(topic).size() + " questions</font></center></html>");
             topicButton.setFont(new Font("SansSerif", Font.BOLD, 16));
             topicButton.setForeground(Color.WHITE);
             topicButton.setBackground(new Color(45, 55, 80));
@@ -40,7 +48,7 @@ public class TopicPanel extends JPanel {
         JScrollPane scrollPane = new JScrollPane(gridPanel);
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
-        add(scrollPane,BorderLayout.CENTRE);
+        add(scrollPane, BorderLayout.CENTER);
 
         JPanel bottomPanel = new JPanel();
         bottomPanel.setBackground(new Color(24, 28, 40));
@@ -53,6 +61,6 @@ public class TopicPanel extends JPanel {
     }
 
     public void setPlayerName(String name) {
-        playerLabel.setText("Player: " +name);
+        playerLabel.setText("Player: " + name);
     }
 }

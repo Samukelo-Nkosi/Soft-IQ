@@ -1,7 +1,7 @@
 /**
  * This panel will display questions one at a
  * time for the selected topic, tracks the users
- * score, and let's them return to topic selection.
+ * score, and lets them return to topic selection.
  */
 
 
@@ -31,7 +31,7 @@ public class QuizPanel extends JPanel {
     public QuizPanel(MainFrame frame, String topic) {
         this.frame = frame;
         this.topic = topic;
-        this.questions = QuizRepository.getQuestions(topic); // loaded from SQLite
+        this.questions = Questionbank.getQuestions(topic);
 
         setLayout(new BorderLayout());
         setBackground(new Color(24, 28, 40));

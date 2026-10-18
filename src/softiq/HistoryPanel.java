@@ -4,6 +4,10 @@
 package softiq;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.util.List;
 
 public class HistoryPanel extends JPanel {
     private static final Color BG = new Color(24, 28, 40);

@@ -24,6 +24,8 @@ The application provides topic-based quizzes, immediate answer feedback, live sc
     - Performance remark
 - **Retake functionality**
 - **Switch between topics** without restarting the application
+- **Persistent quiz history** stored locally in SQLite, with per-player filtering
+- **Clear-history control** for deleting saved attempts
 - **Exit confirmation** to prevent accidental application closure
 - **Expandable question bank** for adding new subjects and questions
 
@@ -153,12 +155,14 @@ SoftIQ/
 │       ├── TopicPanel.java
 │       ├── QuizPanel.java
 │       ├── ResultPanel.java
+│       ├── HistoryPanel.java
+│       ├── QuizRepository.java
+│       ├── DatabaseManager.java
+│       ├── Grading.java
 │       ├── Question.java
-│       └── QuestionBank.java
+│       └── Questionbank.java
 │
-├── .intelliJidea/
-│   ├── settings.json
-│   └── launch.json
+├── pom.xml
 │
 └── README.md
 ```
@@ -173,8 +177,11 @@ SoftIQ/
 | `TopicPanel.java` | Displays available quiz topics |
 | `QuizPanel.java` | Handles questions, answers, feedback, progress, and scoring |
 | `ResultPanel.java` | Displays the final score, percentage, and grade |
+| `HistoryPanel.java` | Displays and filters saved quiz attempts |
+| `QuizRepository.java` | Reads and writes quiz attempts |
+| `DatabaseManager.java` | Creates and opens the local SQLite database |
 | `Question.java` | Data model representing an individual question |
-| `QuestionBank.java` | Stores topics and their questions |
+| `Questionbank.java` | Stores topics and their questions |
 
 ---
 
@@ -211,6 +218,7 @@ SoftIQ/
 To run SoftIQ, you need:
 
 - **JDK 8 or later**
+- **Apache Maven 3.6 or later**
 - A Java-compatible IDE or terminal
 - Windows, macOS, or Linux
 
@@ -229,20 +237,17 @@ javac -version
 
 ### Option 1: Command Line
 
-Open a terminal in the `SoftIQ` project directory.
-
-Compile the source files:
+Open a terminal in the `SoftIQ` project directory and run:
 
 ```bash
-cd src
-javac softiq/*.java -d ../out
+mvn clean compile exec:java
 ```
 
-Run the application:
+Maven downloads the SQLite JDBC driver and other required build plugins. Quiz history is saved to:
 
-```bash
-cd ../out
-java softiq.SoftIQ
+```text
+<user-home>/.softiq/softiq.db
+```
 
 ---
 
@@ -311,7 +316,7 @@ src/softiq/SoftIQ.java
 Questions are managed centrally inside:
 
 ```text
-src/softiq/QuestionBank.java
+src/softiq/Questionbank.java
 ```
 
 A question follows this structure:
@@ -356,7 +361,7 @@ In this example, `1` means **Java** is the correct answer.
 
 ## Adding a New Topic
 
-New topics can also be added through `QuestionBank.java`.
+New topics can also be added through `Questionbank.java`.
 
 First, register the topic:
 
@@ -385,7 +390,7 @@ private static List<Question> buildOperatingSystemQuestions() {
 }
 ```
 
-The new topic will automatically appear on the topic-selection screen because the UI reads topics directly from `QuestionBank`.
+The new topic will automatically appear on the topic-selection screen because the UI reads topics directly from `Questionbank`.
 
 ---
 
@@ -404,7 +409,7 @@ SoftIQ follows a simple component-based structure.
        WelcomePanel  TopicPanel  QuizPanel
                                      │
                                      ▼
-                               QuestionBank
+                               Questionbank
                                      │
                                      ▼
                                   Question
@@ -432,7 +437,7 @@ This keeps the application inside a single main window while allowing different 
 
 ### Centralized Question Bank
 
-All quiz content is stored in `QuestionBank.java`. This makes it easier to:
+All quiz content is stored in `Questionbank.java`. This makes it easier to:
 
 - Add questions
 - Add new topics
@@ -458,9 +463,6 @@ Possible future versions of SoftIQ could include:
 - [ ] Timed quizzes
 - [ ] High-score leaderboard
 - [ ] User profiles
-- [ ] Persistent scores
-- [ ] SQLite/MySQL database integration
-- [ ] Quiz history
 - [ ] Custom quiz creation
 - [ ] Dark/light theme switching
 - [ ] Sound effects
@@ -475,10 +477,9 @@ Possible future versions of SoftIQ could include:
 
 The current version is intentionally lightweight:
 
-- Questions are stored directly in Java source code.
-- Scores are not persisted after the application closes.
+- Quiz questions are stored directly in Java source code.
 - There is no user authentication.
-- There is no external database.
+- Quiz history is stored in a local SQLite database and is not synchronized between devices.
 - The question order is fixed.
 - Each topic contains a relatively small number of questions.
 

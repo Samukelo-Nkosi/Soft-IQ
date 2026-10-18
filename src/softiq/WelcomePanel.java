@@ -24,13 +24,13 @@ public class WelcomePanel extends JPanel {
         gbc.insets = new Insets(10, 10, 10, 10);
         gbc.anchor = GridBagConstraints.CENTER;
 
-        JLabel subtitleLabel = new JLabel("SoftIQ");
-        titleLabel.setFont(new Font("SansSerif", font.BOLD, 56));
-        titleLabel.setForeGround(new Color(8, 44, 85));
+        JLabel titleLabel = new JLabel("SoftIQ");
+        titleLabel.setFont(new Font("SansSerif", Font.BOLD, 56));
+        titleLabel.setForeground(new Color(88, 166, 255));
         gbc.gridy = 0;
         add(titleLabel, gbc);
 
-        JLabel titleLabel = new JLabel("Test Your Software Development Knowledge");
+        JLabel subtitleLabel = new JLabel("Test Your Software Development Knowledge");
         subtitleLabel.setFont(new Font("SansSerif", Font.PLAIN, 18));
         subtitleLabel.setForeground(Color.LIGHT_GRAY);
         gbc.gridy = 1;
@@ -44,12 +44,24 @@ public class WelcomePanel extends JPanel {
         gbc.gridy = 2;
         gbc.insets = new Insets(10, 10, 30, 10);
         add(descLabel, gbc);
+
+        JPanel buttons = new JPanel(new FlowLayout(FlowLayout.CENTER, 12, 0));
+        buttons.setOpaque(false);
+        JButton startButton = createButton("Start Quiz", new Color(46, 160, 67));
+        startButton.addActionListener(e -> frame.beginQuiz());
+        JButton exitButton = createButton("Exit", new Color(200, 60, 60));
+        exitButton.addActionListener(e -> frame.exitApp());
+        buttons.add(startButton);
+        buttons.add(exitButton);
+        gbc.gridy = 3;
+        gbc.insets = new Insets(10, 10, 10, 10);
+        add(buttons, gbc);
     }
 
     private JButton  createButton(String text, Color bgColor) {
         JButton button = new JButton(text);
         button.setFont(new Font("SansSerif", Font.BOLD, 16));
-        button.setForeGround(Color.WHITE);
+        button.setForeground(Color.WHITE);
         button.setBackground(bgColor);
         button.setFocusPainted(false);
         button.setPreferredSize(new Dimension(220, 45));

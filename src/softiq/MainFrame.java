@@ -11,7 +11,7 @@ package softiq;
 import javax.swing.*;
 import java.awt.*;
 
-public class MainFrame extends Jframe {
+public class MainFrame extends JFrame {
     public static final String CARD_WELCOME = "welcome";
     public static final String CARD_TOPICS = "topics";
     public static final String CARD_QUIZ = "quiz";
@@ -89,13 +89,7 @@ public class MainFrame extends Jframe {
 
     /** Starts a fresh quiz for the given topic. */
     public void startQuiz(String topic) {
-        QuizPanel quizPanel;
-        try {
-            quizPanel = new QuizPanel(this, topic);
-        } catch (DatabaseException e) {
-            showDatabaseError(e);
-            return;
-        }
+        QuizPanel quizPanel = new QuizPanel(this, topic);
         quizPanel.setName(CARD_QUIZ);
         removeCardIfPresent(CARD_QUIZ);
         container.add(quizPanel, CARD_QUIZ);
