@@ -1,5 +1,5 @@
 /**
- * SoftIQ - A Software Development Knowledge Quiz
+ * SoftIQ - A Soft Skill Knowledge Quiz
  * this is the Entry point of the application
  */
 
