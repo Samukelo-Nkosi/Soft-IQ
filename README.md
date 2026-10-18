@@ -1,6 +1,6 @@
 # SoftIQ
 
-> **Test your software development knowledge.**
+> **Test your ICT soft skills knowledge.**
 
 SoftIQ is a Java Swing desktop quiz application designed to help students and developers test their knowledge of core software development concepts through interactive multiple-choice quizzes.
 
