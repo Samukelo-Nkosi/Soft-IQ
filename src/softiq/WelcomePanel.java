@@ -13,7 +13,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class WelcomePanel extends JPanel {
-    private static final String CREATOR_NAME = "Samukelo Nkosi";
+    private static final String CREATOR_NAME = "Samukelo.dev";
 
     public WelcomePanel(MainFrame frame){
         setLayout(new GridBagLayout());
