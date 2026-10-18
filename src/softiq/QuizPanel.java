@@ -34,40 +34,44 @@ public class QuizPanel extends JPanel {
         this.questions = Questionbank.getQuestions(topic);
 
         setLayout(new BorderLayout());
-        setBackground(new Color(24, 28, 40));
-        setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+        setBackground(UiTheme.BACKGROUND);
+        setBorder(BorderFactory.createEmptyBorder(20, 36, 20, 36));
 
         // Top bar: back button + progress
         JPanel topBar = new JPanel(new BorderLayout());
         topBar.setOpaque(false);
 
         JButton backButton = new JButton("\u2190 Back to Topics");
-        backButton.setFocusPainted(false);
+        UiTheme.styleButton(backButton, UiTheme.SURFACE_RAISED, UiTheme.BORDER);
         backButton.addActionListener(e -> confirmBackToTopics());
         topBar.add(backButton, BorderLayout.WEST);
 
         progressLabel = new JLabel("", SwingConstants.RIGHT);
         progressLabel.setFont(new Font("SansSerif", Font.BOLD, 14));
-        progressLabel.setForeground(Color.LIGHT_GRAY);
+        progressLabel.setForeground(UiTheme.ACCENT);
+        progressLabel.setBorder(BorderFactory.createEmptyBorder(0, 12, 0, 0));
         topBar.add(progressLabel, BorderLayout.EAST);
 
         add(topBar, BorderLayout.NORTH);
 
         // ---- Center: question + options ----
         JPanel centerPanel = new JPanel();
-        centerPanel.setOpaque(false);
+        centerPanel.setBackground(UiTheme.SURFACE);
+        centerPanel.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(UiTheme.BORDER, 1),
+                BorderFactory.createEmptyBorder(26, 30, 26, 30)));
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
 
         JLabel topicLabel = new JLabel(topic);
         topicLabel.setFont(new Font("SansSerif", Font.PLAIN, 14));
-        topicLabel.setForeground(new Color(88, 166, 255));
+        topicLabel.setForeground(UiTheme.ACCENT);
         topicLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         centerPanel.add(topicLabel);
         centerPanel.add(Box.createVerticalStrut(8));
 
         questionLabel = new JLabel();
         questionLabel.setFont(new Font("SansSerif", Font.BOLD, 20));
-        questionLabel.setForeground(Color.WHITE);
+        questionLabel.setForeground(UiTheme.TEXT);
         questionLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         centerPanel.add(questionLabel);
         centerPanel.add(Box.createVerticalStrut(20));
@@ -91,11 +95,8 @@ public class QuizPanel extends JPanel {
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         bottomPanel.setOpaque(false);
         nextButton = new JButton("Submit Answer");
-        nextButton.setFont(new Font("SansSerif", Font.BOLD, 15));
-        nextButton.setForeground(Color.WHITE);
-        nextButton.setBackground(new Color(46, 160, 67));
-        nextButton.setFocusPainted(false);
-        nextButton.setPreferredSize(new Dimension(160, 40));
+        UiTheme.styleButton(nextButton, UiTheme.ACCENT, UiTheme.ACCENT_HOVER);
+        nextButton.setPreferredSize(new Dimension(190, 46));
         nextButton.addActionListener(e -> handleNextOrSubmit());
         bottomPanel.add(nextButton);
         add(bottomPanel, BorderLayout.SOUTH);
@@ -140,9 +141,14 @@ public class QuizPanel extends JPanel {
         for (int i = 0; i < options.length; i++) {
             JRadioButton radio = new JRadioButton(options[i]);
             radio.setFont(new Font("SansSerif", Font.PLAIN, 15));
-            radio.setForeground(Color.WHITE);
-            radio.setOpaque(false);
+            radio.setForeground(UiTheme.TEXT);
+            radio.setBackground(UiTheme.SURFACE_RAISED);
+            radio.setOpaque(true);
+            radio.setBorder(BorderFactory.createCompoundBorder(
+                    BorderFactory.createLineBorder(UiTheme.BORDER, 1),
+                    BorderFactory.createEmptyBorder(10, 12, 10, 12)));
             radio.setAlignmentX(Component.LEFT_ALIGNMENT);
+            radio.setMaximumSize(new Dimension(Integer.MAX_VALUE, 48));
             radio.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             final int idx = i;
             radio.addActionListener(e -> selectedOption = idx);
@@ -179,10 +185,10 @@ public class QuizPanel extends JPanel {
             setOptionsEnabled(false);
             if (q.isCorrect(selectedOption)) {
                 score++;
-                feedbackLabel.setForeground(new Color(46, 160, 67));
+                feedbackLabel.setForeground(UiTheme.SUCCESS);
                 feedbackLabel.setText("\u2713 Correct!");
             } else {
-                feedbackLabel.setForeground(new Color(220, 80, 80));
+                feedbackLabel.setForeground(UiTheme.DANGER);
                 feedbackLabel.setText("\u2717 Incorrect. Correct answer: " + q.getOptions()[q.getCorrectIndex()]);
             }
             progressLabel.setText("Question " + (currentIndex + 1) + " of " + questions.size()

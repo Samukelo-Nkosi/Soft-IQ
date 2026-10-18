@@ -28,12 +28,14 @@ public class MainFrame extends JFrame {
     public MainFrame() {
         setTitle("SoftIQ - Test Your Software Development Knowledge");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        getContentPane().setBackground(UiTheme.BACKGROUND);
         setSize(800, 680);
         setMinimumSize(new Dimension(700, 640));
         setLocationRelativeTo(null);
 
         cardLayout = new CardLayout();
         container = new JPanel(cardLayout);
+        container.setBackground(UiTheme.BACKGROUND);
 
         WelcomePanel welcomePanel = new WelcomePanel(this);
         topicPanel = new TopicPanel(this);

@@ -10,7 +10,7 @@ import java.awt.*;
 import java.util.List;
 
 public class HistoryPanel extends JPanel {
-    private static final Color BG = new Color(24, 28, 40);
+    private static final Color BG = UiTheme.BACKGROUND;
 
     private final DefaultTableModel model;
     private final JCheckBox mineOnly;
@@ -29,20 +29,21 @@ public class HistoryPanel extends JPanel {
 
         JLabel heading = new JLabel("Quiz History");
         heading.setFont(new Font("SansSerif", Font.BOLD, 28));
-        heading.setForeground(Color.WHITE);
+        heading.setForeground(UiTheme.TEXT);
         heading.setAlignmentX(Component.LEFT_ALIGNMENT);
         north.add(heading);
         north.add(Box.createVerticalStrut(6));
 
         summaryLabel = new JLabel(" ");
         summaryLabel.setFont(new Font("SansSerif", Font.PLAIN, 14));
-        summaryLabel.setForeground(new Color(88, 166, 255));
+        summaryLabel.setForeground(UiTheme.ACCENT);
         summaryLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         north.add(summaryLabel);
 
         mineOnly = new JCheckBox("Show only my attempts");
         mineOnly.setOpaque(false);
-        mineOnly.setForeground(Color.LIGHT_GRAY);
+        mineOnly.setForeground(UiTheme.MUTED);
+        mineOnly.setFocusPainted(false);
         mineOnly.setAlignmentX(Component.LEFT_ALIGNMENT);
         mineOnly.addActionListener(e -> loadRows());
         north.add(mineOnly);
@@ -59,13 +60,22 @@ public class HistoryPanel extends JPanel {
             }
         };
         JTable table = new JTable(model);
-        table.setRowHeight(26);
+        table.setRowHeight(30);
         table.setFont(new Font("SansSerif", Font.PLAIN, 13));
         table.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 13));
-        table.setBackground(new Color(34, 40, 58));
-        table.setForeground(Color.WHITE);
-        table.setGridColor(new Color(60, 70, 95));
+        table.setBackground(UiTheme.SURFACE);
+        table.setForeground(UiTheme.TEXT);
+        table.setGridColor(UiTheme.BORDER);
+        table.setSelectionBackground(new Color(47, 91, 111));
+        table.setSelectionForeground(UiTheme.TEXT);
+        table.setShowVerticalLines(false);
+        table.setIntercellSpacing(new Dimension(0, 1));
         table.setFillsViewportHeight(true);
+        table.getTableHeader().setOpaque(true);
+        table.getTableHeader().setBackground(UiTheme.SURFACE_RAISED);
+        table.getTableHeader().setForeground(UiTheme.ACCENT);
+        table.getTableHeader().setBorder(BorderFactory.createMatteBorder(
+                0, 0, 1, 0, UiTheme.BORDER));
 
         DefaultTableCellRenderer center = new DefaultTableCellRenderer();
         center.setHorizontalAlignment(SwingConstants.CENTER);
@@ -78,7 +88,8 @@ public class HistoryPanel extends JPanel {
         }
 
         JScrollPane scroll = new JScrollPane(table);
-        scroll.getViewport().setBackground(new Color(34, 40, 58));
+        scroll.getViewport().setBackground(UiTheme.SURFACE);
+        scroll.setBorder(BorderFactory.createLineBorder(UiTheme.BORDER));
         add(scroll, BorderLayout.CENTER);
 
         // ---- Bottom: buttons + database location ----
@@ -88,10 +99,10 @@ public class HistoryPanel extends JPanel {
         JPanel buttons = new JPanel(new FlowLayout(FlowLayout.CENTER, 12, 4));
         buttons.setOpaque(false);
         JButton backButton = new JButton("Back to Home");
-        backButton.setFocusPainted(false);
+        UiTheme.styleButton(backButton, UiTheme.SURFACE_RAISED, UiTheme.BORDER);
         backButton.addActionListener(e -> frame.showWelcome());
         JButton clearButton = new JButton("Clear History");
-        clearButton.setFocusPainted(false);
+        UiTheme.styleButton(clearButton, UiTheme.DANGER, new Color(232, 121, 127));
         clearButton.addActionListener(e -> clearHistory(frame));
         buttons.add(backButton);
         buttons.add(clearButton);
@@ -100,7 +111,7 @@ public class HistoryPanel extends JPanel {
         JLabel dbLabel = new JLabel("Database: " + DatabaseManager.getDatabasePath(),
                 SwingConstants.CENTER);
         dbLabel.setFont(new Font("SansSerif", Font.PLAIN, 11));
-        dbLabel.setForeground(new Color(130, 130, 130));
+        dbLabel.setForeground(UiTheme.MUTED);
         south.add(dbLabel, BorderLayout.SOUTH);
         add(south, BorderLayout.SOUTH);
     }

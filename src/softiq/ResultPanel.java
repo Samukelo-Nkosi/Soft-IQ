@@ -14,7 +14,7 @@ public class ResultPanel extends JPanel {
 
     public ResultPanel(MainFrame frame, String topic, int score, int total) {
         setLayout(new GridBagLayout());
-        setBackground(new Color(24, 28, 40));
+        setBackground(UiTheme.BACKGROUND);
 
         double percentage = Grading.percentage(score, total);
         String grade = Grading.letterFor(percentage);
@@ -27,13 +27,13 @@ public class ResultPanel extends JPanel {
 
         JLabel headingLabel = new JLabel("Quiz Complete!");
         headingLabel.setFont(new Font("SansSerif", Font.BOLD, 32));
-        headingLabel.setForeground(Color.WHITE);
+        headingLabel.setForeground(UiTheme.TEXT);
         gbc.gridy = 0;
         add(headingLabel, gbc);
 
         JLabel topicLabel = new JLabel("Topic: " + topic);
         topicLabel.setFont(new Font("SansSerif", Font.PLAIN, 16));
-        topicLabel.setForeground(new Color(88, 166, 255));
+        topicLabel.setForeground(UiTheme.ACCENT);
         gbc.gridy = 1;
         add(topicLabel, gbc);
 
@@ -46,35 +46,35 @@ public class ResultPanel extends JPanel {
 
         JLabel scoreLabel = new JLabel(String.format("Score: %d / %d  (%.1f%%)", score, total, percentage));
         scoreLabel.setFont(new Font("SansSerif", Font.BOLD, 18));
-        scoreLabel.setForeground(Color.LIGHT_GRAY);
+        scoreLabel.setForeground(UiTheme.MUTED);
         gbc.gridy = 3;
         gbc.insets = new Insets(10, 10, 10, 10);
         add(scoreLabel, gbc);
 
         JLabel remarkLabel = new JLabel(remarkFor(grade));
         remarkLabel.setFont(new Font("SansSerif", Font.ITALIC, 15));
-        remarkLabel.setForeground(new Color(200, 200, 200));
+        remarkLabel.setForeground(UiTheme.MUTED);
         gbc.gridy = 4;
         gbc.insets = new Insets(5, 10, 30, 10);
         add(remarkLabel, gbc);
 
-        JButton retryButton = createButton("Choose Another Topic", new Color(46, 160, 67));
+        JButton retryButton = createButton("Choose Another Topic", UiTheme.ACCENT);
         retryButton.addActionListener(e -> frame.showTopics());
         gbc.gridy = 5;
         gbc.insets = new Insets(8, 10, 8, 10);
         add(retryButton, gbc);
 
-        JButton retakeButton = createButton("Retake This Topic", new Color(70, 100, 200));
+        JButton retakeButton = createButton("Retake This Topic", UiTheme.SURFACE_RAISED);
         retakeButton.addActionListener(e -> frame.startQuiz(topic));
         gbc.gridy = 6;
         add(retakeButton, gbc);
 
-        JButton historyButton = createButton("View History", new Color(120, 90, 180));
+        JButton historyButton = createButton("View History", UiTheme.SURFACE_RAISED);
         historyButton.addActionListener(e -> frame.showHistory());
         gbc.gridy = 7;
         add(historyButton, gbc);
 
-        JButton exitButton = createButton("Exit", new Color(200, 60, 60));
+        JButton exitButton = createButton("Exit", UiTheme.DANGER);
         exitButton.addActionListener(e -> frame.exitApp());
         gbc.gridy = 8;
         add(exitButton, gbc);
@@ -82,11 +82,11 @@ public class ResultPanel extends JPanel {
 
     private Color gradeColor(String grade) {
         switch (grade) {
-            case "A": return new Color(46, 204, 113);
-            case "B": return new Color(88, 166, 255);
-            case "C": return new Color(241, 196, 15);
-            case "D": return new Color(230, 126, 34);
-            default: return new Color(231, 76, 60);
+            case "A": return UiTheme.SUCCESS;
+            case "B": return UiTheme.ACCENT;
+            case "C": return UiTheme.WARNING;
+            case "D": return new Color(231, 145, 83);
+            default: return UiTheme.DANGER;
         }
     }
 
@@ -94,20 +94,17 @@ public class ResultPanel extends JPanel {
         switch (grade) {
             case "A": return "Outstanding! You know your stuff.";
             case "B": return "Great job! Just a little more polish.";
-            case "C": return "Not bad , a bit more practice will help.";
+            case "C": return "Not bad, a bit more practice will help.";
             case "D": return "You're getting there. Review the basics and try again.";
-            default: return "Keep studying , you'll get it next time!";
+            default: return "Keep studying, you'll get it next time!";
         }
     }
 
     private JButton createButton(String text, Color bgColor) {
         JButton button = new JButton(text);
-        button.setFont(new Font("SansSerif", Font.BOLD, 15));
-        button.setForeground(Color.WHITE);
-        button.setBackground(bgColor);
-        button.setFocusPainted(false);
-        button.setPreferredSize(new Dimension(240, 42));
-        button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        UiTheme.styleButton(button, bgColor,
+                bgColor.equals(UiTheme.ACCENT) ? UiTheme.ACCENT_HOVER : UiTheme.BORDER);
+        button.setPreferredSize(new Dimension(250, 44));
         return button;
     }
 }

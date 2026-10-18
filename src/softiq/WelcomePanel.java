@@ -17,56 +17,61 @@ public class WelcomePanel extends JPanel {
 
     public WelcomePanel(MainFrame frame){
         setLayout(new GridBagLayout());
-        setBackground(new Color(24, 28, 40));
+        setBackground(UiTheme.BACKGROUND);
 
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.insets = new Insets(10, 10, 10, 10);
-        gbc.anchor = GridBagConstraints.CENTER;
+        JPanel card = new JPanel();
+        card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
+        card.setBackground(UiTheme.SURFACE);
+        card.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(UiTheme.BORDER, 1),
+                BorderFactory.createEmptyBorder(38, 48, 34, 48)));
 
         JLabel titleLabel = new JLabel("SoftIQ");
-        titleLabel.setFont(new Font("SansSerif", Font.BOLD, 56));
-        titleLabel.setForeground(new Color(88, 166, 255));
-        gbc.gridy = 0;
-        add(titleLabel, gbc);
+        titleLabel.setFont(new Font("SansSerif", Font.BOLD, 54));
+        titleLabel.setForeground(UiTheme.ACCENT);
+        titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        card.add(titleLabel);
 
         JLabel subtitleLabel = new JLabel("Test Your Software Development Knowledge");
-        subtitleLabel.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        subtitleLabel.setForeground(Color.LIGHT_GRAY);
-        gbc.gridy = 1;
-        add(subtitleLabel, gbc);
+        subtitleLabel.setFont(new Font("SansSerif", Font.PLAIN, 19));
+        subtitleLabel.setForeground(UiTheme.TEXT);
+        subtitleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        card.add(Box.createVerticalStrut(8));
+        card.add(subtitleLabel);
 
         JLabel descLabel = new JLabel("<html><div style='text-align:center;'>Covers Java, Networking, OOP Concepts, and Databases &amp; SQL.<br>" +
                 "Pick a topic, answer the questions, and get your final grade!</div></html>");
-
         descLabel.setFont(new Font("SansSerif", Font.PLAIN, 14));
-        descLabel.setForeground(new Color(200, 200, 200));
-        gbc.gridy = 2;
-        gbc.insets = new Insets(10, 10, 30, 10);
-        add(descLabel, gbc);
+        descLabel.setForeground(UiTheme.MUTED);
+        descLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        card.add(Box.createVerticalStrut(18));
+        card.add(descLabel);
 
         JPanel buttons = new JPanel(new FlowLayout(FlowLayout.CENTER, 12, 0));
         buttons.setOpaque(false);
-        JButton startButton = createButton("Start Quiz", new Color(46, 160, 67));
+        JButton startButton = createButton("Start Quiz", UiTheme.ACCENT, UiTheme.ACCENT_HOVER);
         startButton.addActionListener(e -> frame.beginQuiz());
-        JButton exitButton = createButton("Exit", new Color(200, 60, 60));
+        JButton exitButton = createButton("Exit", UiTheme.SURFACE_RAISED, UiTheme.BORDER);
         exitButton.addActionListener(e -> frame.exitApp());
         buttons.add(startButton);
         buttons.add(exitButton);
-        gbc.gridy = 3;
-        gbc.insets = new Insets(10, 10, 10, 10);
-        add(buttons, gbc);
+        card.add(Box.createVerticalStrut(28));
+        card.add(buttons);
+
+        JLabel creatorLabel = new JLabel("Created by " + CREATOR_NAME);
+        creatorLabel.setFont(new Font("SansSerif", Font.PLAIN, 12));
+        creatorLabel.setForeground(UiTheme.MUTED);
+        creatorLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        card.add(Box.createVerticalStrut(24));
+        card.add(creatorLabel);
+
+        add(card);
     }
 
-    private JButton  createButton(String text, Color bgColor) {
+    private JButton createButton(String text, Color bgColor, Color hoverColor) {
         JButton button = new JButton(text);
-        button.setFont(new Font("SansSerif", Font.BOLD, 16));
-        button.setForeground(Color.WHITE);
-        button.setBackground(bgColor);
-        button.setFocusPainted(false);
-        button.setPreferredSize(new Dimension(220, 45));
-        button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        button.setBorder(BorderFactory.createEmptyBorder());
+        UiTheme.styleButton(button, bgColor, hoverColor);
+        button.setPreferredSize(new Dimension(170, 44));
         return button;
     }
 }
