@@ -39,7 +39,7 @@ public class WelcomePanel extends JPanel {
         card.add(Box.createVerticalStrut(8));
         card.add(subtitleLabel);
 
-        JLabel descLabel = new JLabel("<html><div style='text-align:center;'>Covers Java, Networking, OOP Concepts, and Databases &amp; SQL.<br>" +
+        JLabel descLabel = new JLabel("<html><div style='text-align:center;'>Explore Java, PHP, HTML, CSS, Python, Networking, and Databases &amp; SQL.<br>" +
                 "Pick a topic, answer the questions, and get your final grade!</div></html>");
         descLabel.setFont(new Font("SansSerif", Font.PLAIN, 14));
         descLabel.setForeground(UiTheme.MUTED);

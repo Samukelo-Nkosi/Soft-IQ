@@ -33,15 +33,18 @@ The application provides topic-based quizzes, immediate answer feedback, live sc
 
 ## Available Topics
 
-SoftIQ currently includes four software-development topics:
+SoftIQ currently includes seven topics:
 
 | Topic | Questions |
 |---|---:|
-| Java | 8 |
+| Java (including OOP) | 15 |
 | Networking | 8 |
-| OOP Concepts | 7 |
+| PHP | 8 |
+| HTML | 8 |
+| CSS | 8 |
+| Python | 8 |
 | Databases & SQL | 7 |
-| **Total** | **30** |
+| **Total** | **62** |
 
 ### Java
 Covers fundamental Java concepts including:
@@ -54,6 +57,7 @@ Covers fundamental Java concepts including:
 - `final`
 - Exception handling
 - The `main()` method
+- Object-oriented programming: encapsulation, inheritance, polymorphism, abstraction, overriding, overloading, and composition
 
 ### Networking
 Covers fundamental networking concepts including:
@@ -66,16 +70,17 @@ Covers fundamental networking concepts including:
 - DHCP
 - Private IP addresses
 
-### OOP Concepts
-Covers:
+### PHP
+Covers PHP tags, variables, output, comparisons, form data, functions, file extensions, and null values.
 
-- Encapsulation
-- Inheritance
-- Polymorphism
-- Abstraction
-- Method overriding
-- Method overloading
-- Composition
+### HTML
+Covers document structure, headings, links, attributes, images, alternative text, semantic elements, and HTML5 declarations.
+
+### CSS
+Covers selectors, colors, the box model, spacing, Flexbox, and comments.
+
+### Python
+Covers functions, comments, output, collections, `None`, conditionals, exponentiation, and source-file extensions.
 
 ### Databases & SQL
 Covers:

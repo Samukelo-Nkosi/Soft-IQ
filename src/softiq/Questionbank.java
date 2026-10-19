@@ -18,7 +18,10 @@ public class Questionbank {
     static {
         BANK.put("Java", buildJavaQuestions());
         BANK.put("Networking", buildNetworkingQuestions());
-        BANK.put("OOP Concepts", buildOopQuestions());
+        BANK.put("PHP", buildPhpQuestions());
+        BANK.put("HTML", buildHtmlQuestions());
+        BANK.put("CSS", buildCssQuestions());
+        BANK.put("Python", buildPythonQuestions());
         BANK.put("Databases & SQL", buildDatabaseQuestions());
     }
 
@@ -48,6 +51,7 @@ public class Questionbank {
                 new String[]{"try-catch", "if-else", "switch-case", "for-loop"}, 0));
         q.add(new Question("What is the entry point method of a Java application?",
                 new String[]{"start()", "run()", "main()", "init()"}, 2));
+        q.addAll(buildOopQuestions());
         return q;
     }
 
@@ -88,6 +92,90 @@ public class Questionbank {
                 new String[]{"Inheritance", "Composition", "Polymorphism", "Interface"}, 1));
         q.add(new Question("What does 'abstraction' focus on?",
                 new String[]{"Exposing implementation details", "Hiding complex implementation and showing only essentials", "Combining data and methods", "Creating multiple objects"}, 1));
+        return q;
+    }
+
+    private static List<Question> buildPhpQuestions() {
+        List<Question> q = new ArrayList<>();
+        q.add(new Question("Which opening tag is commonly used to start PHP code?",
+                new String[]{"<php>", "<?php", "<script php>", "<?>"}, 1));
+        q.add(new Question("Which symbol begins a PHP variable name?",
+                new String[]{"#", "$", "@", "&"}, 1));
+        q.add(new Question("Which statement outputs text in PHP?",
+                new String[]{"echo", "write", "printline", "display"}, 0));
+        q.add(new Question("Which operator checks both value and type for equality in PHP?",
+                new String[]{"=", "==", "===", "!="}, 2));
+        q.add(new Question("Which superglobal commonly contains data submitted with the POST method?",
+                new String[]{"$_GET", "$_POST", "$_SERVER", "$_COOKIE"}, 1));
+        q.add(new Question("Which keyword defines a function in PHP?",
+                new String[]{"func", "function", "def", "method"}, 1));
+        q.add(new Question("Which extension is commonly used for a PHP source file?",
+                new String[]{".html", ".php", ".ph", ".phtmlx"}, 1));
+        q.add(new Question("Which value represents an empty or absent value in PHP?",
+                new String[]{"void", "None", "null", "empty"}, 2));
+        return q;
+    }
+
+    private static List<Question> buildHtmlQuestions() {
+        List<Question> q = new ArrayList<>();
+        q.add(new Question("What is the primary purpose of HTML?",
+                new String[]{"Style a page", "Structure web content", "Store database records", "Run server processes"}, 1));
+        q.add(new Question("Which element represents the largest level-one heading?",
+                new String[]{"<head>", "<h1>", "<header>", "<title>"}, 1));
+        q.add(new Question("Which element creates a hyperlink?",
+                new String[]{"<link>", "<a>", "<href>", "<url>"}, 1));
+        q.add(new Question("Which attribute specifies the destination of a hyperlink?",
+                new String[]{"src", "target", "href", "rel"}, 2));
+        q.add(new Question("Which element displays an image?",
+                new String[]{"<picture-src>", "<img>", "<image>", "<media>"}, 1));
+        q.add(new Question("Which attribute provides alternative text for an image?",
+                new String[]{"title", "alt", "label", "description"}, 1));
+        q.add(new Question("Which semantic element is intended for a page's main content?",
+                new String[]{"<main>", "<sectioning>", "<content>", "<body-main>"}, 0));
+        q.add(new Question("Which declaration identifies an HTML5 document?",
+                new String[]{"<html5>", "<!DOCTYPE html>", "<DOCTYPE=5>", "<?html>"}, 1));
+        return q;
+    }
+
+    private static List<Question> buildCssQuestions() {
+        List<Question> q = new ArrayList<>();
+        q.add(new Question("What is the primary purpose of CSS?",
+                new String[]{"Structure a page", "Style and lay out web content", "Store user data", "Handle server requests"}, 1));
+        q.add(new Question("Which selector targets an element with id=\"header\"?",
+                new String[]{".header", "#header", "*header", "header#"}, 1));
+        q.add(new Question("Which selector targets every element with class=\"card\"?",
+                new String[]{"#card", ".card", "card", "@card"}, 1));
+        q.add(new Question("Which CSS property changes the text color?",
+                new String[]{"font-style", "text-color", "color", "foreground"}, 2));
+        q.add(new Question("Which property adds space inside an element's border?",
+                new String[]{"margin", "padding", "gap", "outline"}, 1));
+        q.add(new Question("In the CSS box model, which area is outside the border?",
+                new String[]{"padding", "content", "margin", "inset"}, 2));
+        q.add(new Question("Which declaration turns an element into a flex container?",
+                new String[]{"position: flex;", "display: flex;", "layout: flex;", "flex: on;"}, 1));
+        q.add(new Question("Which symbol starts a CSS comment?",
+                new String[]{"//", "<!--", "/*", "#"}, 2));
+        return q;
+    }
+
+    private static List<Question> buildPythonQuestions() {
+        List<Question> q = new ArrayList<>();
+        q.add(new Question("Which keyword defines a function in Python?",
+                new String[]{"function", "def", "fun", "define"}, 1));
+        q.add(new Question("Which character begins a single-line comment in Python?",
+                new String[]{"//", "#", "--", "/*"}, 1));
+        q.add(new Question("Which built-in function displays text in the console?",
+                new String[]{"echo()", "console()", "print()", "write()"}, 2));
+        q.add(new Question("Which collection type stores ordered, changeable items?",
+                new String[]{"tuple", "list", "set", "frozenset"}, 1));
+        q.add(new Question("Which value represents the absence of a value in Python?",
+                new String[]{"null", "undefined", "None", "empty"}, 2));
+        q.add(new Question("Which keyword starts a conditional branch?",
+                new String[]{"when", "if", "case", "check"}, 1));
+        q.add(new Question("Which operator is used for exponentiation in Python?",
+                new String[]{"^", "**", "//", "%%"}, 1));
+        q.add(new Question("Which file extension is commonly used for Python source files?",
+                new String[]{".pt", ".python", ".py", ".pyt"}, 2));
         return q;
     }
 
