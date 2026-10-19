@@ -32,7 +32,7 @@ public class WelcomePanel extends JPanel {
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         card.add(titleLabel);
 
-        JLabel subtitleLabel = new JLabel("Test Your Software Development Knowledge");
+        JLabel subtitleLabel = new JLabel("Test Your ICT soft skill Knowledge");
         subtitleLabel.setFont(new Font("SansSerif", Font.PLAIN, 19));
         subtitleLabel.setForeground(UiTheme.TEXT);
         subtitleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);

@@ -31,6 +31,35 @@ The application provides topic-based quizzes, immediate answer feedback, live sc
 
 ---
 
+## ICT Project Submission
+
+### Project Description
+
+**SoftIQ** is a Java desktop application that helps students practise and review foundational ICT concepts through short, topic-based quizzes. It currently covers Java and object-oriented programming, networking, PHP, HTML, CSS, Python, and databases and SQL. Players choose a topic, answer multiple-choice questions, receive immediate feedback, and see a score, percentage, grade, and performance remark. Quiz attempts are saved locally in SQLite, allowing players to review their history and average results.
+
+### Innovation, Impact, and Practical Application
+
+SoftIQ brings several introductory ICT subjects together in one lightweight learning tool. Its immediate explanations help learners identify knowledge gaps while practising, and its saved results make it easier to revisit progress over time. Students can use it for independent revision, quick knowledge checks, or peer study sessions. Because the quiz and history run locally on the computer, the current version does not require an online account or hosted service.
+
+The project is an educational prototype: its question bank is fixed in the source code, and the saved history is local to one computer. Results are intended for practice and self-review, not as a formal assessment or a substitute for instruction.
+
+### 10-Minute Demonstration Video Outline
+
+| Time | Demonstration |
+|---|---|
+| 0:00–1:00 | Introduce SoftIQ and the learning problem it addresses: practising foundational ICT topics with useful feedback. |
+| 1:00–2:00 | Launch the application, point out the live date and time, and explain how to start a quiz. |
+| 2:00–3:00 | Enter a player name and show the available topics and question counts. |
+| 3:00–5:30 | Start a quiz, select and submit answers, and demonstrate immediate correct/incorrect feedback and answer explanations. |
+| 5:30–6:30 | Finish the quiz and explain the score, percentage, grade, and performance remark. |
+| 6:30–8:00 | Open quiz history; show saved attempts, the player filter, and the average score. |
+| 8:00–9:00 | Demonstrate retaking the topic or choosing another topic, then explain how the question bank can be extended. |
+| 9:00–10:00 | Summarize the project's practical value, current local-storage limitation, and possible future improvements. |
+
+Before recording, use a clean or clearly labelled test history, confirm the application launches, and prepare one quiz so the demonstration fits the time limit. Avoid showing private information in the video.
+
+---
+
 ## Available Topics
 
 SoftIQ currently includes seven topics:
