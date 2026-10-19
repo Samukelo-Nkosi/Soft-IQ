@@ -258,10 +258,10 @@ Maven downloads the SQLite JDBC driver and other required build plugins. Quiz hi
 3. Open:
 
 ```text
-src/softiq/SoftIQ.java
+src/Main.java
 ```
 
-4. Click **Run** above the `main()` method.
+4. Click **Run** above the `main()` method to launch the quiz GUI. `Main.java` delegates to `softiq.SoftIQ`, the application entry point.
 
 Alternatively, press:
 
