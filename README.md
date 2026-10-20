@@ -594,9 +594,3 @@ Application Development / SoftIQ
 ## Project Status
 
 **Status:** Active Development
-
-SoftIQ is a Java desktop application that can be expanded from a simple educational quiz into a larger learning and assessment platform.
-
----
-
-> **SoftIQ - Learn. Test. Improve.**
